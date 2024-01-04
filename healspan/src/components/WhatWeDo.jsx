@@ -39,7 +39,7 @@ const WhatWeDo = () => {
   return (
     <div>
       <div className=" flex flex-col justify-center items-center mt-[60px]">
-        <h1 className=' text-[45px] font-semibold'>What We Do</h1>
+        <h1 className=' text-[55px] text-[#050505] font-bold font-sans '>What We Do</h1>
 
         <Carousel
             additionalTransfrom={0}
@@ -90,7 +90,7 @@ const WhatWeDo = () => {
         >
             {data.map((item, index) => {
                 return (
-                    <div className="flex justify-between bg-[#0b3c85] items-center  w-[1200px] mx-auto rounded-md mt-[70px] pl-[10px] pr-[10px]">
+                    <div className="flex justify-between bg-gradient-to-tr from-blue-900 via-blue-700 to-sky-500 items-center  w-[1200px] mx-auto rounded-md mt-[70px] pl-[10px] pr-[10px]">
                         
                         <div className="flex justify-center items-center">
                             <img src={item.image} className="w-[400px] p-8 bo "></img>
@@ -103,10 +103,8 @@ const WhatWeDo = () => {
                 )
             })}
         </Carousel>
-
       </div>
     </div>
   )
 }
-
 export default WhatWeDo

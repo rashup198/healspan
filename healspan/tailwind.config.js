@@ -8,4 +8,9 @@ export default {
     extend: {},
   },
   plugins: [],
+  fontFamily: {
+    body: ["Fjalla One"],
+    'sans': ["Poppins",'Roboto', 'sans-serif'],
+    
+  }
 }

@@ -4,7 +4,7 @@ import hero from"../assets/hero.png"
 const Hero = () => {
   return (
     <div>
-      <div className=" bg-[#0a3a83] flex justify-between p-[100px] ">
+      <div className=" bg-gradient-to-tr from-blue-700 via-blue-400 to-blue-200 flex justify-between p-[100px] ">
         <div className="left flex flex-col gap-y-[40px]">
             <div className="parent text-[45px] font-semibold text-white">
             <h1>
@@ -30,8 +30,8 @@ const Hero = () => {
         </div>
 
         <div className="right max-w-[600px]">
-            <div className=" ">
-            <img src={hero} className='rounded-l-[120%] rounded-r-[50%]'></img>
+            <div className="">
+            <img src={hero} className=' border-[10px] border-orange-500 rounded-l-[120%] rounded-r-[50%]'></img>
             </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ const OurClients = () => {
   return (
     <div>
       <div className="parent flex flex-col justify-center items-center ">
-        <h1 className='text-[40px] font-semibold pt-[30px] pb-[50px]'>
+        <h1 className=' text-[50px] text-[#050505] font-bold font-sans  pt-[60px] pb-[60px]'>
             Trusted By The India's Leading Hospitals
         </h1>
         <div className="childParent flex gap-[100px] ">

@@ -5,7 +5,7 @@ const WhyUs = () => {
     <div>
         <div className="parent">
             <div className="childParent bg-white pl-[160px] pr-[160px] pt-[100px]">
-            <div className="child h-[430px] text-white text-[45px] font-semibold text-center rounded-lg bg-[#0b3c85]">
+            <div className="child h-[430px] text-white text-[45px] font-semibold text-center rounded-lg bg-gradient-to-tr from-blue-900 via-blue-700 to-sky-500">
                 <h1 className='pt-[20px] '>Why partner with us</h1>
                 <div className="card select-none flex items-center justify-center mt-[50px]">
                         <div className='hover:shadow-xl shadow-xl ml-[40px] flex select-none rounded-xl p-4 md:p-6 flex-col justify-center items-center bg-white w-72 md:w-80 max-h-80'>
