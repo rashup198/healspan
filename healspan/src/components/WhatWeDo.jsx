@@ -7,7 +7,6 @@ import img3 from "../assets/img3.png"
 import img4 from "../assets/img4.png"
 import img5 from "../assets/img5.png"
 
-
 const WhatWeDo = () => {
     const data = [
         {
@@ -38,7 +37,7 @@ const WhatWeDo = () => {
     ]
   return (
     <div>
-      <div className=" flex flex-col justify-center items-center mt-[60px]">
+      <div className=" flex flex-col justify-center items-center mt-[60px] bg-[#f0eeee] pb-[40px]">
         <h1 className=' text-[55px] text-[#050505] font-bold font-sans '>What We Do</h1>
 
         <Carousel
@@ -103,6 +102,9 @@ const WhatWeDo = () => {
                 )
             })}
         </Carousel>
+      </div>
+      <div className=" flex justify-center items-center mt-[100px]">
+      <iframe width="1160" height="615" src="https://www.youtube.com/embed/4-pfpf0wAGI?si=JBkUt3FBV6iwSgxW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
   )
