@@ -37,7 +37,7 @@ const WhatWeDo = () => {
     ]
   return (
     <div>
-      <div className=" flex flex-col justify-center items-center mt-[60px] bg-[#f0eeee] pb-[40px]">
+      <div name='whatwedo' className="  flex flex-col justify-center items-center mt-[60px] bg-[#f0eeee] pb-[40px]">
         <h1 className=' text-[55px] text-[#050505] font-bold font-sans '>What We Do</h1>
 
         <Carousel
