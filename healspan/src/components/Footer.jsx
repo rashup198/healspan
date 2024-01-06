@@ -3,6 +3,7 @@ import logo from "../assets/logo.svg"
 import { FaLinkedin,FaLocationDot,FaPhone,  } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 import { FaXTwitter } from "react-icons/fa6";
+import Contact from './Contact';
 
 const Footer = () => {
   return (
@@ -25,7 +26,9 @@ const Footer = () => {
         </div>
     </div>   
     <p className='text-center'>Copyrights © KR4U Technologies service private limited. All rights reserved.</p> 
+    
     </div>
+    
   )
 }
 
