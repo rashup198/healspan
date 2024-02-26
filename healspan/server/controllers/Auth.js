@@ -3,7 +3,8 @@ const User = require("../models/User");
 const OTP = require("../models/OTP");
 const jwt = require("jsonwebtoken");
 const otpGenerator = require("otp-generator");
-const Profile = require("../models/Profile")
+const Profile = require("../models/Profile");
+const mailSender = require("../utils/mailSender");
 
 
 // signup controller to regetser user
@@ -194,6 +195,67 @@ exports.sendotp= async(req, res)=>{
             success :false,
             error:error.message,
             message:"Can not send otp try again"
+        })
+    }
+}
+
+// change password
+
+exports.changePassword= async (req, res)=>{
+    try {
+        const userDetails = await User.findById(req.user.id);
+
+        // the old and new password
+        const {oldPassword, newPassword}= req.body
+
+        const match = await bcrypt.compare(oldPassword, userDetails.password)
+
+        if(!match){
+            return res.status(400).json({
+                success:false,
+                message:"Password incorrect"
+            })
+        }
+
+        // updated password
+
+        const hashedPass= await bcrypt.hash(newPassword,10)
+        const updatedDetails = await User.findByIdAndUpdate(
+            req.user.id,
+            {password:hashedPass},
+            {new:true}
+            )
+
+            // sending mail about password change
+
+            try {
+                const emailResponse = await mailSender(
+                    updatedDetails.email,
+                    `Password has beeen changed for you account ${updatedDetails.firstName}`,
+                    passwordUpdated(
+                        updatedDetails.email,
+                        `Password has been updated succesfully for ${updatedDetails.firstName} ${updatedDetails.lastName}`
+                    )
+                )
+                console.log("Mail sent " , emailResponse.response);
+            } catch (error) {
+                console.log(error);
+                return res.status(500).json({
+                    success:false,
+                    message:"Some error occured while sending mail"
+                })   
+            }
+
+            return res.status(200).json({
+                success:true,
+                message:"Password updated Sucessfully"
+            })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:"Error occured while updating password ",
+            error:error.message
         })
     }
 }
