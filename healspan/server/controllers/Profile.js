@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Profile = require("../models/Profile");
 require("dotenv").config();
+const mongoose = require('mongoose');
 
 exports.updateProfile = async (req, res) => {
     try {
@@ -45,3 +46,58 @@ exports.updateProfile = async (req, res) => {
          });
     }
 }
+
+
+// delete profile
+
+exports.deleteProfile=async (req,res)=>{
+    try {
+        const id = req.user.id;
+
+        const user= await User.findById({_id:id})
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message:"User not found"
+            })
+        }
+
+        await Profile.findByIdAndDelete({
+            _id: new mongoose.Types.ObjectId(user.additionalDetails),
+        })
+        await User.findByIdAndDelete({_id:id})
+
+        return res.status(200).json({
+            success:true,
+            message:"Profile Deleted SuccessFuly"
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:"Failed to delete your Profile"
+        })
+    }
+}
+
+//get all user details
+
+exports.getAllUserDetails = async (req, res) => {
+    try {
+      const id = req.user.id
+      const userDetails = await User.findById(id)
+        .populate("additionalDetails")
+        .exec()
+      console.log(userDetails)
+      res.status(200).json({
+        success: true,
+        message: "User Data fetched successfully",
+        data: userDetails,
+      })
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: error.message,
+      })
+    }
+  }
