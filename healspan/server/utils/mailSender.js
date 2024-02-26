@@ -1,20 +1,20 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-const mailSender = async (email, title, body)=>{
+const mailSender = async (email, titel, body)=>{
 
     try {
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             auth: {
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASS
+                user: process.env.EMAIL_ID,
+                pass: process.env.EMAIL_PASS
             }
         });
         let info = await transporter.sendMail({
-            from:`HealSpan `,
+            from:`Healspan `,
             to: email,
-            subject: title,
+            subject: titel,
             text: body
         });
         console.log('Message sent: %s', info);

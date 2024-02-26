@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const otpGenerator = require("otp-generator");
 const Profile = require("../models/Profile");
 const mailSender = require("../utils/mailSender");
-
+require("dotenv").config()
 
 // signup controller to regetser user
 
@@ -117,7 +117,7 @@ exports.login= async (req, res)=>{
                     email:user.email, id:user._id, role:user.accountType
                 }, process.env.JWT_SECRET,
                 {
-                    expriresIn:"24h",
+                    expiresIn: "24h"
                 }
             )
 
@@ -127,7 +127,7 @@ exports.login= async (req, res)=>{
             //settinf cookies
 
             const options ={
-                exprires:new Date(Date.now()+500000),
+                expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
                 httpOnly:true,
             }
             res.cookie("token", token, options).status(200).json({
@@ -153,26 +153,27 @@ exports.login= async (req, res)=>{
 
 // otp
 
-exports.sendotp= async(req, res)=>{
+exports.sendotp = async (req, res) => {
     try {
-        const {email}= req.body;
+      const { email } = req.body
+      const checkUserPresent = await User.findOne({ email })
 
-        const userPresent = await User.findOne({email});
-
-        if(userPresent){
-            return res.status(400).json({
-                success:false,
-                message:"User is already registerd"
-            })
-        }
-        const otp = otpGenerator.generate(6,{
-            upperCaseAlphabets: false,
-            lowerCaseAlphabets: false,
-            specialChars: false,
+      if (checkUserPresent) {
+        return res.status(401).json({
+          success: false,
+          message: `User is Already Registered`,
         })
-        const result = await OTP.findOne({otp:otp})
-        console.log("the otp", otp);
-        console.log("the result",result);
+      }
+  
+      var otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+        lowerCaseAlphabets: false,
+        specialChars: false,
+      })
+      const result = await OTP.findOne({ otp: otp })
+      console.log("Result is Generate OTP Func")
+      console.log("OTP", otp)
+      console.log("Result", result)
 
         while (result) {
             otp = otpGenerator.generate(6, {
