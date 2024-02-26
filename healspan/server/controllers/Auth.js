@@ -47,7 +47,6 @@ exports.signup= async(req,res)=>{
                 message:"Invalid OTP"
             })
         }
-
         //hash pass
         const hashedPassword = await bcrypt.hash(password,10)
 
