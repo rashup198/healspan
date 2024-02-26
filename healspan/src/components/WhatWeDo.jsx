@@ -46,15 +46,14 @@ const WhatWeDo = () => {
 
     return (
         <div>
-            <div name='whatwedo' className="flex flex-col justify-center items-center mt-[60px] bg-[#f0eeee] pb-[40px]">
-                <h1 className='text-[55px] text-[#050505] font-bold font-sans'>What We Do</h1>
+            <div name='whatwedo' className="flex flex-col justify-center items-center mt-10 md:mt-16 bg-[#f0eeee] p-4 pb-8 md:pb-16">
+                <h1 className=' text-[24px] md:text-[45px] font-bold font-sans mb-4 md:mb-8'>What We Do</h1>
 
                 <Carousel
                     additionalTransfrom={0}
                     arrows
                     autoPlaySpeed={1000}
                     centerMode={false}
-                    className=""
                     containerClass="container"
                     dotListClass=""
                     draggable
@@ -98,14 +97,14 @@ const WhatWeDo = () => {
                 >
                     {data.map((item, index) => {
                         return (
-                            <div key={index} className="flex justify-between bg-gradient-to-tr from-blue-900 via-blue-700 to-sky-500 items-center w-[1200px] mx-auto rounded-md mt-[70px] pl-[10px] pr-[10px]">
+                            <div key={index} className="flex flex-col md:flex-row items-center md:justify-between w-full mx-auto rounded-md mt-4 p-4 md:p-8 bg-gradient-to-tr from-blue-900 via-blue-700 to-sky-500 md:w-[80vw] md:mt-[70px] md:pl-[60px] md:gap-[50px] md:pr-[60px]">
 
-                                <div className="flex justify-center items-center">
-                                    <img src={item.image} className="w-[400px] p-8 bo" alt={item.title}></img>
+                                <div className="flex justify-between items-center mb-4 md:mb-0 rounded-md md:rounded-md ">
+                                    <img src={item.image} className="w-full  md:w-[400px]  p-8 md:p-8 rounded-md md:rounded-md" alt={item.title}></img>
                                 </div>
-                                <div className="flex flex-col gap-[30px] w-[600px] text-white">
-                                    <h1 className="text-[45px] font-semibold text-start">{item.title}</h1>
-                                    <p className="text-[20px]">{item.description}</p>
+                                <div className="flex flex-col gap-4 w-full md:gap-[30px] md:w-[600px] text-white">
+                                    <h1 className="text-[22px] text-center md:text-3xl font-semibold md:text-start">{item.title}</h1>
+                                    <p className=" text-lg md:text-xl">{item.description}</p>
                                 </div>
                             </div>
                         );
@@ -113,8 +112,8 @@ const WhatWeDo = () => {
                 </Carousel>
             </div>
 
-            <div className="flex justify-center items-center mt-[100px] mb-[100px]">
-                <iframe width="1160" height="615" src="https://www.youtube.com/embed/4-pfpf0wAGI?si=JBkUt3FBV6iwSgxW" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+            <div className="flex justify-center items-center mt-16 mb-16 p-5 md:p-9 ">
+                <iframe width="100%" height="565" src="https://www.youtube.com/embed/4-pfpf0wAGI?si=JBkUt3FBV6iwSgxW" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
             </div>
         </div>
     );

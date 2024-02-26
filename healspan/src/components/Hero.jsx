@@ -5,6 +5,7 @@ import OurClients from './OurClients';
 import WhyUs from './WhyUs';
 import Collaborate from './collaborate';
 import WhatWeDo from './whatWeDo';
+import Footer from './Footer';
 
 const Hero = () => {
   return (
@@ -33,7 +34,7 @@ const Hero = () => {
               Let's Talk
             </button>
             </Link>
-            <Link to="/whatwedo'"><p className='hover:underline hover:underline-offset-2 cursor-pointer text-white font-semibold text-[14px] md:text-[17px]'>Learn More</p></Link>
+            <Link to="/about-us"><p className='hover:underline hover:underline-offset-2 cursor-pointer text-white font-semibold text-[14px] md:text-[17px]'>Learn More</p></Link>
           </div>
         </div>
 
@@ -43,10 +44,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
-        {/* <OurClients></OurClients>
-        <WhyUs></WhyUs>
-        <WhatWeDo></WhatWeDo>
-        <Collaborate></Collaborate> */}
+         <OurClients></OurClients>
+         <WhyUs></WhyUs>
+         <WhatWeDo></WhatWeDo>
+         <Collaborate></Collaborate> 
+         <Footer></Footer>
     </div>
   );
 }

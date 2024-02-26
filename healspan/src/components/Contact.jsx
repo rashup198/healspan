@@ -23,7 +23,7 @@ const Contact = () => {
       Organisation: organisation
     };
 
-    axios.post("https://sheet.best/api/sheets/4a3017b6-cf1c-4cf1-a542-9afd265e8aec", data)
+    axios.post("https://sheet.best/api/sheets/ac82a1d1-cf7a-401c-8d39-249a903842ef", data)
       .then((response) => {
         console.log(response);
         toast.success("Form submitted successfully!");
@@ -41,7 +41,7 @@ const Contact = () => {
 
   return (
     <div className="">
-    <div className="min-h-screen flex items-center justify-center -mb-[100px]">
+    <div className="min-h-screen flex items-center justify-center  -mb-[100px]">
       <div className="bg-[rgb(233,232,232)] p-8 rounded-md shadow-md w-full md:w-2/3 lg:w-1/2 xl:w-1/2">
         <h1 className="text-4xl text-center font-bold  mb-[30px]">Let's Talk</h1>
         <form onSubmit={handelSubmit}>
