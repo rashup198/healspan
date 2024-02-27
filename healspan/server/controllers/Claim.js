@@ -144,3 +144,114 @@ exports.editClaim= async (req,res)=>{
     }
 }
 
+// get all claims
+
+exports.getAllClaims= async (req,res)=>{
+    try {
+        const allClaims = await Claim.find({})
+
+        if(!allClaims){
+            return res.status(400).json({
+                success: false,
+                message:"Claims not found",
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            message:"All Claims fetched successfully",
+            data: allClaims
+        })
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message:"Something went wrong",
+        })
+    }
+}
+
+// delete claim
+exports.deleteClaim=async(req,res)=>{
+    try {
+        const {claimId} = req.body;
+        const claim = await Claim.findById(claimId);
+        if(!claim){
+            return res.status(400).json({
+                success: false,
+                message:"Claims not found",
+            })
+        }
+
+        await Claim.findByIdAndDelete(claimId);
+
+        return res.status(200).json({
+            status:true,
+            message:"Claim deleted successfully"
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message:"Something went wrong",
+        })
+    }
+}
+
+
+//// get all approved claims
+exports.getAllApprovedClaims = async (req, res) => {
+    try {
+        const approvedClaims = await Claim.find({ status: 'approved' });
+
+        if (!approvedClaims) {
+            return res.status(404).json({
+                success: false,
+                message: "No approved claims found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "All approved claims fetched successfully",
+            data: approvedClaims
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Failed to fetch approved claims",
+            error: error.message
+        });
+    }
+}
+
+// get all rejected claims
+exports.getAllRejectedClaims = async (req, res) => {
+    try {
+        const rejectedClaims = await Claim.find({ status: 'denied' });
+
+        if (!rejectedClaims) {
+            return res.status(404).json({
+                success: false,
+                message: "No rejected claims found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "All rejected claims fetched successfully",
+            data: rejectedClaims
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Failed to fetch rejected claims",
+            error: error.message
+        });
+    }
+}
+
+
