@@ -24,8 +24,11 @@ const claimSchema = new mongoose.Schema({
         default: 'pending'
     },
     billPhoto: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Document'
+        type: String,
+        required: true
+    },
+    medicalReportPhoto: {
+        type: String, 
     }
 }, { timestamps: true });
 
